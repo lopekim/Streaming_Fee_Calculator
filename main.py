@@ -1,4 +1,11 @@
 from tkinter import *
+from datetime import *
+
+def update_time():
+    now = datetime.now()
+    current = now.strftime("%Y-%m-%d %H시%M분%S초")
+    ctime.config(text=current)
+    window.after(1000, update_time)
 
 window = Tk()
 window.title('스트리밍 수익 수수료 계산기')
@@ -49,5 +56,9 @@ sub_button2.pack(pady=10)
 feature_label = Label(frame3, text='기능 화면', bg='white')
 feature_label.pack(pady=20)
 
+
+ctime = Label(frame1, text="", bg='gray')
+ctime.pack(side='bottom', pady=10)
+update_time()
 
 window.mainloop()
